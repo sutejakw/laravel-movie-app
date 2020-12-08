@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ViewModels\MovieViewModel;
+use App\ViewModels\MoviesViewModel;
 use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
@@ -24,12 +26,14 @@ class MoviesController extends Controller
         $nowPlayingMovies =  Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/now_playing')
             ->json()['results'];
-    
-        return view('index', [
-            'popularMovies' => $popularMovies,
-            'genres' => $genres,
-            'nowPlayingMovies' => $nowPlayingMovies
-        ]);
+
+        $viewModel = new MoviesViewModel(
+            $popularMovies, 
+            $nowPlayingMovies,
+            $genres
+        );
+
+        return view('movies.index', $viewModel);
     }
 
     public function create()
@@ -56,10 +60,9 @@ class MoviesController extends Controller
             return [$genre['id'] => $genre['name']];
         });
 
-        return view('show', [
-            'movie' => $movie,
-            'genres' => $genres
-        ]);
+        $viewModel = new MovieViewModel($movie);
+
+        return view('movies.show', $viewModel);
     }
 
     public function edit($id)
