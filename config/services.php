@@ -32,7 +32,6 @@ return [
 
     
     'tmdb' => [
-        'token' => env('TMDB_TOKEN')
+        'token' => "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTAxMjI3NTAyNmNlMGQ4NTI1NWQyZTAyYjUyNTNhOCIsInN1YiI6IjVmOTdkNDY3YWM2MTdjMDAzOGY4MDAyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lDvCe4vhup0S95aTvw3kDwwWL7IBbj0WvhfDvhTS1MI"
     ],
-
 ];

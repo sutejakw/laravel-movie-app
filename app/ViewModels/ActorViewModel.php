@@ -26,7 +26,7 @@ class ActorViewModel extends ViewModel
             'profile_path' => $this->actor['profile_path']
             ? 'https://image.tmdb.org/t/p/w300/'.$this->actor['profile_path']
             : 'https://via.placeholder.com/300x450',
-        ])->dump();
+        ]);
     }
 
     public function social()
@@ -36,7 +36,7 @@ class ActorViewModel extends ViewModel
             'instagram' => $this->social['instagram_id'] ? 'https://instagram.com/'.$this->social['instagram_id'] : null,
             'facebook' => $this->social['facebook_id'] ? 'https://facebook.com/'.$this->social['facebook_id'] : null,
             
-        ])->dump();
+        ]);
     }
 
     public function knownForMovies()
@@ -52,6 +52,6 @@ class ActorViewModel extends ViewModel
                     'title' => isset($movie['title']) ? $movie['title'] : 'Untitled',
                     
                 ]);
-            })->dump();
+            });
     }
 }
